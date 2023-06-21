@@ -23,7 +23,7 @@ export default function NavBar() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className='justify-content-end flex-grow-1 pe-3'>
-              <Nav.Link href='/'>Products</Nav.Link>
+              <Nav.Link href=''>Products</Nav.Link>
               <Nav.Link
                 style={{  cursor: "pointer" }}
                 onClick={handleShowCart}
