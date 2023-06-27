@@ -13,7 +13,10 @@ const ProductWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+const ProductInfo = styled.div`
+margin-bottom: 32px;
 
+`;
 const ProductImage = styled.img`
   width: 100%;
   border: 3px solid black;
@@ -51,17 +54,17 @@ export default function ProductSection(product) {
   };
   return (
     <>
-      <ProductWrapper>
+      <ProductWrapper className="container-fluid">
         <div className='row'>
-          <div className=' col-xl-6 col-md-6 col-sm-12 d-flex align-items-center'>
-            <div>
+          <div className='col-xl-6 col-md-6 col-sm-12 d-flex align-items-center gap-3'>
+            <ProductInfo>
               <h1>{product.product.title}</h1>
               <p>{product.product.description}</p>
               <p>{product.product.priceRange.minVariantPrice.amount}€</p>
               <button variant='dark' className='btn btn-dark' onClick={handleAddToCart}>
                 Add to cart
               </button>
-            </div>
+            </ProductInfo>
           </div>
           <div className='col-xl-6 col-md-6 col-sm-12'>
             <ProductImage src={product.product.images.nodes[0].url} alt='' />

@@ -17,12 +17,13 @@ const HeroSection = styled.div`
     font-size: calc(2rem + 5vw);
     font-weight: 700;
     color: #f5f5f5;
+    margin-left: 32px;
   }
 `;
 function Hero() {
   return (
     <HeroSection>
-      <div className='container'>
+      <div className='container-fluid'>
         <h1>dear:</h1>
         <h2></h2>
       </div>

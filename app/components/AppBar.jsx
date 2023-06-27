@@ -26,14 +26,16 @@ const Logo = styled.a`
 `;
 
 const MenuToggle = styled.button`
+  display: none;
   background: none;
   border: none;
   padding: 0.5rem;
-  cursor: pointer;
   z-index: 10;
-  display: flex;
   flex-direction: column;
   color: #141414;
+  @media (max-width: 768px) {
+    display: flex;
+  }
 `;
 
 const HamburgerIcon = styled(motion.span)`
@@ -54,8 +56,10 @@ const Menu = styled(motion.div)`
   height: 100vh;
   background-color: #ffdada;
   padding: 4rem;
+  display: none;
 
   @media (max-width: 768px) {
+    display: block;
     width: 100%;
     margin-top: 65px;
   }
@@ -75,7 +79,13 @@ const MenuItem = styled.a`
   text-decoration: none;
   padding: 0.5rem 0;
 `;
+const NavLinks = styled.div`
+  flex-grow: 1;
+  display: flex;
 
+  align-items: center;
+  gap: 32px;
+`;
 const NavItems = styled.div`
   display: flex;
   justify-content: space-between;
@@ -89,76 +99,62 @@ const MenuLinks = styled.div`
     margin: 0;
     color: #141414;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const { showCart, setShowCart, handleCloseCart, handleShowCart } = useStateContext();
+  const { handleShowCart } = useStateContext();
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
-      }
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const menuLinks = [
     { name: "Home", path: "/" },
-    { name: "Contact", path: "/link2" },
-    { name: "Jobs", path: "/link2" },
-    { name: "Links", path: "/link2" },
-    { name: "Us", path: "/link2" },
+    { name: "Contact", path: "/" },
+    { name: "Jobs", path: "/" },
+    { name: "Links", path: "/" },
+    { name: "Us", path: "/" },
   ];
 
   return (
     <>
       <NavbarContainer>
-        <Logo as={Link} href='/'>dear:</Logo>
-        {!collapsed && (
+        <NavLinks>
+          <Logo as={Link} href='/'>
+            dear:
+          </Logo>
           <MenuLinks>
             {menuLinks.map((link) => (
-              <p key={link.name} href={link.path}>
+              <a key={link.name} href={link.path}>
                 {link.name}
-              </p>
+              </a>
             ))}
           </MenuLinks>
-        )}
+        </NavLinks>
         <NavItems className='flex'>
           <div onClick={handleShowCart}>
             <FaShoppingCart style={{ fontSize: "25px", color: "#141414", cursor: "pointer" }} />
           </div>
-          {collapsed && (
-            <MenuToggle onClick={toggleMenu}>
-              <HamburgerIcon
-                animate={isMenuOpen ? "open" : "closed"}
-                variants={{
-                  open: { rotate: 45, opacity: 1, y: 6 },
-                  closed: { rotate: 0, opacity: 1, y: 0 },
-                }}
-              />
 
-              <HamburgerIcon
-                animate={isMenuOpen ? "open" : "closed"}
-                variants={{
-                  open: { rotate: -45, opacity: 1, y: -6 },
-                  closed: { rotate: 0, opacity: 1, y: 0 },
-                }}
-              />
-            </MenuToggle>
-          )}
+          <MenuToggle onClick={toggleMenu}>
+            <HamburgerIcon
+              animate={isMenuOpen ? "open" : "closed"}
+              variants={{
+                open: { rotate: 45, opacity: 1, y: 6 },
+                closed: { rotate: 0, opacity: 1, y: 0 },
+              }}
+            />
+
+            <HamburgerIcon
+              animate={isMenuOpen ? "open" : "closed"}
+              variants={{
+                open: { rotate: -45, opacity: 1, y: -6 },
+                closed: { rotate: 0, opacity: 1, y: 0 },
+              }}
+            />
+          </MenuToggle>
         </NavItems>
         {isMenuOpen && (
           <Menu>

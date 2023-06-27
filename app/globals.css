@@ -1,4 +1,3 @@
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -14,11 +13,11 @@
 }
 
 body {
-background-color: white;
-font-family: var(--font-poppins);
+  background-color: white;
+  font-family: var(--font-poppins);
 }
 
-a{
+a {
   text-decoration: none !important;
   color: inherit;
 }
@@ -32,41 +31,42 @@ a{
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.navbar{
-  backdrop-filter: blur(20px) !important;
-}
-
-.offcanvas-body{
-  justify-content: flex-end !important;
-}
-
-.nav-link:focus, .nav-link:hover{
-  color: white;
-  opacity: 0.8;
-}
-.navbar-toggler{
-  transition: none !important;
-  border: none;
-}
-.navbar-toggler:hover{
-  opacity: 0.8 !important;
-}
-
-.navbar-toggler:focus{
+  outline: none !important;
   box-shadow: none !important;
 }
 
-#offcanvasNavbar{
-  background-color: rgb(39, 39, 39);
-}
-.btn-close:focus{
-    box-shadow: none !important;
+.navbar {
+  backdrop-filter: blur(20px) !important;
 }
 
-.show{
+.offcanvas-body {
+  justify-content: flex-end !important;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: white;
+  opacity: 0.8;
+}
+.navbar-toggler {
+  transition: none !important;
+  border: none;
+}
+.navbar-toggler:hover {
+  opacity: 0.8 !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+#offcanvasNavbar {
+  background-color: rgb(39, 39, 39);
+}
+.btn-close:focus {
+  box-shadow: none !important;
+}
+
+.show {
   color: white !important;
 }

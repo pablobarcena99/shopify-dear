@@ -10,7 +10,7 @@ margin-top: 32px;
 export default function ProductsGallery(props) {
   const products = props.products;
   return (
-    <GalleryWrapper>
+    <GalleryWrapper className='container-fluid'>
       <div className='row'>
         {products.map((product) => {
           return <ProductCard product={product} key={product.node.id} />;

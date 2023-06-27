@@ -6,9 +6,7 @@ import styled from "styled-components";
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 200px;
   margin-bottom: 16px;
-  /* border-radius: 16px; */
   overflow: hidden;
   color: inherit;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
@@ -22,7 +20,8 @@ const ProductInfo = styled.div`
   justify-content: start;
   padding: 8px;
   color: black;
-  p {
+
+  * {
     padding: 0px;
     margin: 0px;
   }
@@ -33,12 +32,12 @@ export default function ProductCard(props) {
   const simplyfyId = id.split("gid://shopify/Product/")[1];
 
   return (
-    <div className='col col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6'>
+    <div className='col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12'>
       <Link href={`products/${props.product.node.handle}/?id=${simplyfyId}`}>
         <Card>
-          <img src={props.product.node.featuredImage.url} alt='' />
+          <img src={props.product.node.featuredImage.url} alt={props.product.node.handle} />
           <ProductInfo>
-            <p className='product-title'>{props.product.node.title}</p>
+            <p>{props.product.node.title}</p>
             <p>{props.product.node.priceRange.minVariantPrice.amount}€</p>
             {/* <p>{props.product.node.description}</p> */}
           </ProductInfo>
