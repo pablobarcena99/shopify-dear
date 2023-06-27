@@ -10,6 +10,7 @@ import StyledComponentsRegistry from "./utils/registry";
 import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 import { StateContext } from "./utils/StateContext";
+import AppBar from "./components/AppBar";
 
 export const metadata = {
   title: "dear: clothing",
@@ -23,8 +24,9 @@ export default function RootLayout({ children }) {
         <StyledComponentsRegistry>
           <body className={`${varent.variable} ${poppins.variable}`}>
             <Cart />
-            <NavBar />
-            <div style={{ height: "50px" }}></div>
+            {/* <NavBar /> */}
+            <AppBar />
+            <div style={{ height: "65px" }}></div>
             {children}
           </body>
         </StyledComponentsRegistry>

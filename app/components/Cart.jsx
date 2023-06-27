@@ -10,8 +10,7 @@ export default function Cart() {
   const [checkoutUrl, setCheckoutUrl] = useState(null);
   const { isCartUpdated, setIsCartUpdated } = useStateContext();
 
-  // console.log("Updatedcart", isCartUpdated);
-  // console.log("Cart ID :", cartId);
+
 
 
   //Retrieve cart ID from session storage

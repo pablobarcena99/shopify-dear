@@ -51,14 +51,9 @@ export default function ProductSection(product) {
   };
   return (
     <>
-      {/* {checkout ? (
-        <Link href={`/cart?cartid=${sessionStorage.getItem("cartId")}`}>Checkout</Link>
-      ) : (
-        <></>
-      )} */}
       <ProductWrapper>
         <div className='row'>
-          <div className='col col-xl-6 col-md-6 d-flex align-items-center'>
+          <div className=' col-xl-6 col-md-6 col-sm-12 d-flex align-items-center'>
             <div>
               <h1>{product.product.title}</h1>
               <p>{product.product.description}</p>
@@ -66,20 +61,9 @@ export default function ProductSection(product) {
               <button variant='dark' className='btn btn-dark' onClick={handleAddToCart}>
                 Add to cart
               </button>
-
-              {/* <QtyControls>
-
-                <button variant='dark' className='btn btn-dark' >
-                  +
-                </button>
-                <p>{quantity}</p>
-                <button variant='dark' className='btn btn-dark' >
-                  -
-                </button>
-              </QtyControls> */}
             </div>
           </div>
-          <div className='col col-xl-6 col-md-6'>
+          <div className='col-xl-6 col-md-6 col-sm-12'>
             <ProductImage src={product.product.images.nodes[0].url} alt='' />
           </div>
         </div>

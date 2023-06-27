@@ -35,11 +35,10 @@ export default function CartOffcanvas(props) {
 
   const cartInfo = props.cartInfo;
   const checkoutUrl = props.checkoutUrl;
-  console.log("chekout", checkoutUrl);
 
   return (
     <Offcanvas show={showCart} onHide={handleCloseCart} placement='end' className='bg-dark'>
-      <Offcanvas.Header closeButton>
+      <Offcanvas.Header closeButton closeVariant="white">
         <Offcanvas.Title>Cart</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
