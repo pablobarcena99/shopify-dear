@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterContainer = styled.div`
-  background-color: #ffdada;
+  background-color: #fb4d3d;
   min-height: 400px;
   padding: 32px 0;
 `;
@@ -13,6 +13,13 @@ const FooterLogo = styled.h3`
 `;
 const FooterLinks = styled.div`
   color: #141414;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  a:hover{
+    color: white
+  }
+
 `;
 
 export default function Footer() {
@@ -28,26 +35,26 @@ export default function Footer() {
             <div className='row'>
               <div className='col-lg-4 col-sm-6'>
                 <FooterLinks>
-                  <h3>Links</h3>
-                  <p>Home</p>
-                  <p>About Us</p>
-                  <p>FAQ</p>
+                  <h3>Products</h3>
+                  <a href=''>Shirts</a>
+                  <a href=''>Sweatshirts</a>
+                  <a href=''>Jeans</a>
                 </FooterLinks>
               </div>
               <div className='col-lg-4 col-sm-6'>
                 <FooterLinks>
                   <h3>Links</h3>
-                  <p>Home</p>
-                  <p>About Us</p>
-                  <p>FAQ</p>
+                  <a href=''>Home</a>
+                  <a href=''>About Us</a>
+                  <a href=''>FAQ</a>
                 </FooterLinks>
               </div>
               <div className='col-lg-4 col-sm-6'>
                 <FooterLinks>
-                  <h3>Links</h3>
-                  <p>Home</p>
-                  <p>About Us</p>
-                  <p>FAQ</p>
+                  <h3>Social</h3>
+                  <a href=''>Instagram</a>
+                  <a href=''>TikTok</a>
+                  <a href=''>Twitter</a>
                 </FooterLinks>
               </div>
             </div>

@@ -14,7 +14,7 @@ const NavbarContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background-color: #ffdada;
+  background-color: white;
   color: #141414;
 `;
 
@@ -26,16 +26,13 @@ const Logo = styled.a`
 `;
 
 const MenuToggle = styled.button`
-  display: none;
   background: none;
   border: none;
   padding: 0.5rem;
   z-index: 10;
   flex-direction: column;
-  color: #141414;
-  @media (max-width: 768px) {
-    display: flex;
-  }
+  color: white;
+  display: flex;
 `;
 
 const HamburgerIcon = styled(motion.span)`
@@ -54,14 +51,11 @@ const Menu = styled(motion.div)`
   right: 0;
   width: 500px;
   height: 100vh;
-  background-color: #ffdada;
-  padding: 4rem;
-  display: none;
+  background-color: white;
+  padding: 100px 4rem;
 
   @media (max-width: 768px) {
-    display: block;
     width: 100%;
-    margin-top: 65px;
   }
 `;
 
@@ -69,13 +63,17 @@ const CollapsedMenuLinks = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+  color: #141414;
+  :hover {
+    color: #ce6d8b;
+  }
 `;
 
 const MenuItem = styled.a`
   text-align: end;
-  font-size: 3rem;
+  font-size: 2rem;
   display: block;
-  color: #3d3434;
+  color: #141414;
   text-decoration: none;
   padding: 0.5rem 0;
 `;
@@ -91,23 +89,25 @@ const NavItems = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  position: relative;
 `;
-const MenuLinks = styled.div`
-  display: flex;
-  gap: 16px;
-  p {
-    margin: 0;
-    color: #141414;
-  }
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
+
 const Navbar = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const { handleShowCart } = useStateContext();
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
+  const { handleToggleCart, handleToggleMenu, isMenuOpen, showCart } = useStateContext();
+  const closeButtonAction = () => {
+    if (isMenuOpen) {
+      handleToggleMenu();
+    } else if (showCart) {
+      handleToggleCart();
+      if (isMenuOpen) {
+        handleToggleMenu();
+      }
+    } else {
+      handleToggleMenu();
+    }
+
+
+
   };
 
   const menuLinks = [
@@ -125,22 +125,15 @@ const Navbar = () => {
           <Logo as={Link} href='/'>
             dear:
           </Logo>
-          <MenuLinks>
-            {menuLinks.map((link) => (
-              <a key={link.name} href={link.path}>
-                {link.name}
-              </a>
-            ))}
-          </MenuLinks>
         </NavLinks>
         <NavItems className='flex'>
-          <div onClick={handleShowCart}>
+          <div onClick={handleToggleCart}>
             <FaShoppingCart style={{ fontSize: "25px", color: "#141414", cursor: "pointer" }} />
           </div>
 
-          <MenuToggle onClick={toggleMenu}>
+          <MenuToggle onClick={closeButtonAction}>
             <HamburgerIcon
-              animate={isMenuOpen ? "open" : "closed"}
+              animate={isMenuOpen || showCart ? "open" : "closed"}
               variants={{
                 open: { rotate: 45, opacity: 1, y: 6 },
                 closed: { rotate: 0, opacity: 1, y: 0 },
@@ -148,7 +141,7 @@ const Navbar = () => {
             />
 
             <HamburgerIcon
-              animate={isMenuOpen ? "open" : "closed"}
+              animate={isMenuOpen || showCart ? "open" : "closed"}
               variants={{
                 open: { rotate: -45, opacity: 1, y: -6 },
                 closed: { rotate: 0, opacity: 1, y: 0 },

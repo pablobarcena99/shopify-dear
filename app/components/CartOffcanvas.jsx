@@ -4,6 +4,7 @@ import { useStateContext } from "../utils/StateContext";
 import { Button, Offcanvas } from "react-bootstrap";
 import Image from "next/image";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Title = styled.h1`
   /* Add your title styles here */
@@ -30,44 +31,59 @@ const ListGroupItem = styled.li`
   }
 `;
 
+const CartMenu = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 100vh;
+  background-color: white;
+  color: #141414;
+  padding: 4rem 32px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 export default function CartOffcanvas(props) {
-  const { showCart, setShowCart, handleCloseCart, handleShowCart } = useStateContext();
+  const { showCart, handleToggleCart } = useStateContext();
 
   const cartInfo = props.cartInfo;
   const checkoutUrl = props.checkoutUrl;
 
   return (
-    <Offcanvas show={showCart} onHide={handleCloseCart} placement='end' className='bg-dark'>
-      <Offcanvas.Header closeButton closeVariant="white">
-        <Offcanvas.Title>Cart</Offcanvas.Title>
-      </Offcanvas.Header>
-      <Offcanvas.Body>
-        {cartInfo && (
-          <div>
-            <ListGroup>
-              {cartInfo.lines.edges.map((line) => (
-                <ListGroupItem key={line.node.id}>
-                  <img
-                    src={line.node.merchandise.product.featuredImage.url}
-                    alt={line.node.merchandise.product.title}
-                  />
-                  <div>
-                    <h4>{line.node.merchandise.product.title}</h4>
-                    <p>Price: {line.node.merchandise.product.priceRange.minVariantPrice.amount}€</p>
-                    <p>Quantity: {line.node.quantity}</p>
-                  </div>
-                </ListGroupItem>
-              ))}
-            </ListGroup>
-            <p>Total Cost: {cartInfo.estimatedCost.totalAmount.amount}€</p>
-            {checkoutUrl && (
-              <Button variant='success' href={checkoutUrl.cart.checkoutUrl}>
-                Checkout
-              </Button>
-            )}
-          </div>
-        )}
-      </Offcanvas.Body>
-    </Offcanvas>
+    <>
+      {showCart && (
+        <CartMenu>
+          <h3>Cart</h3>
+          {cartInfo && (
+            <div>
+              <ListGroup>
+                {cartInfo.lines.edges.map((line) => (
+                  <ListGroupItem key={line.node.id}>
+                    <img
+                      src={line.node.merchandise.product.featuredImage.url}
+                      alt={line.node.merchandise.product.title}
+                    />
+                    <div>
+                      <h4>{line.node.merchandise.product.title}</h4>
+                      <p>
+                        Price: {line.node.merchandise.product.priceRange.minVariantPrice.amount}€
+                      </p>
+                      <p>Quantity: {line.node.quantity}</p>
+                    </div>
+                  </ListGroupItem>
+                ))}
+              </ListGroup>
+              <p>Total Cost: {cartInfo.estimatedCost.totalAmount.amount}€</p>
+              {checkoutUrl && (
+                <Button variant='success' href={checkoutUrl.cart.checkoutUrl}>
+                  Checkout
+                </Button>
+              )}
+            </div>
+          )}
+        </CartMenu>
+      )}
+    </>
   );
 }

@@ -14,12 +14,13 @@ const ProductWrapper = styled.div`
   justify-content: center;
 `;
 const ProductInfo = styled.div`
-margin-bottom: 32px;
+  margin-bottom: 32px;
+
 
 `;
 const ProductImage = styled.img`
   width: 100%;
-  border: 3px solid black;
+  /* border: 3px solid black; */
 `;
 const QtyControls = styled.div`
   display: flex;
@@ -54,8 +55,11 @@ export default function ProductSection(product) {
   };
   return (
     <>
-      <ProductWrapper className="container-fluid">
+      <ProductWrapper className='container-fluid'>
         <div className='row'>
+          <div className='col-xl-6 col-md-6 col-sm-12'>
+            <ProductImage src={product.product.images.nodes[0].url} alt='' />
+          </div>
           <div className='col-xl-6 col-md-6 col-sm-12 d-flex align-items-center gap-3'>
             <ProductInfo>
               <h1>{product.product.title}</h1>
@@ -65,9 +69,6 @@ export default function ProductSection(product) {
                 Add to cart
               </button>
             </ProductInfo>
-          </div>
-          <div className='col-xl-6 col-md-6 col-sm-12'>
-            <ProductImage src={product.product.images.nodes[0].url} alt='' />
           </div>
         </div>
       </ProductWrapper>

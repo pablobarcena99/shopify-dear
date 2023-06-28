@@ -16,7 +16,7 @@ const HeroSection = styled.div`
     font-family: var(--font-varent);
     font-size: calc(2rem + 5vw);
     font-weight: 700;
-    color: #f5f5f5;
+    color: #fadada;
     margin-left: 32px;
   }
 `;

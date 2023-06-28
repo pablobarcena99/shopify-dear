@@ -16,7 +16,7 @@ export default async function Product(context) {
   return (
     <>
       <ProductSection product={product} />
-      <SectionTitle title='Related Products' />
+      {/* <SectionTitle title='Related Products' /> */}
       <ProductsGallery products={relatedProducts} />
     </>
   );
