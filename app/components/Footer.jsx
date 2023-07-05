@@ -12,10 +12,15 @@ const FooterLogo = styled.h3`
   font-family: var(--font-varent);
 `;
 const FooterLinks = styled.div`
-  color: #141414;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  a{
+    color: inherit;
+    color: #141414;
+    text-decoration: none;
+
+  }
   a:hover{
     color: white
   }

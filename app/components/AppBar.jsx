@@ -105,9 +105,6 @@ const Navbar = () => {
     } else {
       handleToggleMenu();
     }
-
-
-
   };
 
   const menuLinks = [
@@ -127,10 +124,11 @@ const Navbar = () => {
           </Logo>
         </NavLinks>
         <NavItems className='flex'>
-          <div onClick={handleToggleCart}>
-            <FaShoppingCart style={{ fontSize: "25px", color: "#141414", cursor: "pointer" }} />
-          </div>
-
+          {!showCart && (
+            <div onClick={handleToggleCart}>
+              <FaShoppingCart style={{ fontSize: "25px", color: "#141414", cursor: "pointer" }} />
+            </div>
+          )}
           <MenuToggle onClick={closeButtonAction}>
             <HamburgerIcon
               animate={isMenuOpen || showCart ? "open" : "closed"}

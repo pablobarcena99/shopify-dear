@@ -6,7 +6,7 @@ import { addToCart, updateCart } from "../utils/shopify";
 import { useStateContext } from "../utils/StateContext";
 
 const ProductWrapper = styled.div`
-  margin-top: 32px;
+  margin-top: 16px;
   h1 {
     color: black;
   }

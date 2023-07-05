@@ -9,24 +9,24 @@ const Card = styled.div`
   margin-bottom: 16px;
   overflow: hidden;
   color: inherit;
-
 `;
 const ProductInfo = styled.div`
   min-height: 100px;
   display: flex;
   flex-direction: column;
-  align-items: end;
-  text-align: right;
+  align-items: start;
   justify-content: start;
   padding: 8px;
   color: black;
-
-  * {
-    padding: 0px;
-    margin: 0px;
-  }
 `;
-
+const ProductTitle = styled.p`
+  font-size: 15px;
+  margin: 0;
+`;
+const ProductPrice = styled.p`
+  font-size: 12px;
+  margin: 0;
+`;
 export default function ProductCard(props) {
   const id = props.product.node.id;
   const simplyfyId = id.split("gid://shopify/Product/")[1];
@@ -37,8 +37,8 @@ export default function ProductCard(props) {
         <Card>
           <img src={props.product.node.featuredImage.url} alt={props.product.node.handle} />
           <ProductInfo>
-            <p>{props.product.node.title}</p>
-            <p>{props.product.node.priceRange.minVariantPrice.amount}€</p>
+            <ProductTitle>{props.product.node.title}</ProductTitle>
+            <ProductPrice>{props.product.node.priceRange.minVariantPrice.amount}€</ProductPrice>
             {/* <p>{props.product.node.description}</p> */}
           </ProductInfo>
         </Card>

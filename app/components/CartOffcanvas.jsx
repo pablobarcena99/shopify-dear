@@ -40,6 +40,9 @@ const CartMenu = styled(motion.div)`
   background-color: white;
   color: #141414;
   padding: 4rem 32px;
+  h3{
+    font-family: var(--font-varent);
+  }
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -54,7 +57,7 @@ export default function CartOffcanvas(props) {
     <>
       {showCart && (
         <CartMenu>
-          <h3>Cart</h3>
+          <h3>cart:</h3>
           {cartInfo && (
             <div>
               <ListGroup>

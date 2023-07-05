@@ -12,12 +12,10 @@ const HeroSection = styled.div`
   background-color: #141414;
 
   h1 {
-    color: #993747;
     font-family: var(--font-varent);
     font-size: calc(2rem + 5vw);
-    font-weight: 700;
     color: #fadada;
-    margin-left: 32px;
+    margin-left: 16px;
   }
 `;
 function Hero() {
